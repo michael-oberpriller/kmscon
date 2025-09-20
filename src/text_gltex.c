@@ -563,6 +563,10 @@ static int gltex_draw(struct kmscon_text *txt,
 	ret = find_glyph(txt, &glyph, id, ch, len, attr);
 	if (ret)
 		return ret;
+
+	if (width < 2)
+		width = glyph->glyph->width;
+
 	atlas = glyph->atlas;
 
 	if (atlas->cache_num >= atlas->cache_size)
